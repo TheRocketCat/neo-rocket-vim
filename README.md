@@ -7,3 +7,8 @@
 
 # What is it not
 a full on IDE, atm spector plugin is good enough for me.
+
+# Setup
+Needs to install Vim-Plug
+https://github.com/junegunn/vim-plug
+and install plugins with command "PlugInstall"

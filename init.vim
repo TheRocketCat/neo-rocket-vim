@@ -20,6 +20,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "git tools
 Plug 'tpope/vim-fugitive' "vim git
 Plug 'jreybert/vimagit'
+"file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "documentation / project/time managment
