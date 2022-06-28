@@ -40,7 +40,7 @@ so $HOME/.config/nvim/spector.vim
 "style
 syntax enable
 hi SignColumn guibg=black ctermbg=black
-set guifont=DejaVu\ Sans\ Mono:h8
+"set guifont=DejaVu\ Sans\ Mono:h8
 "number stuff
 set number
 au TermOpen * setl nonumber
