@@ -7,6 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 "general style 
 Plug 'itchyny/lightline.vim'
+Plug 'Mofiqul/dracula.nvim'
 "linting & language support
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
