@@ -8,13 +8,14 @@ set nowritebackup
 "" fix node issue
 "let g:coc_node_path="/home/RocketCat/.nvm/versions/node/v15.4.0/bin/node"
 
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+nnoremap <silent> K :call ShowDocumentation()<CR>
+" Show hover when provider exists, fallback to vim's builtin behavior.
+function! ShowDocumentation()
+if CocAction('hasProvider', 'hover')
+  call CocActionAsync('definitionHover')
+else
+  call feedkeys('K', 'in')
+endif
 endfunction
 
 " if hidden is not set, TextEdit might fail.
@@ -35,18 +36,18 @@ else
 endif
 
 
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ CheckBackspace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()

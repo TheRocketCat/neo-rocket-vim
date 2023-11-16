@@ -15,6 +15,7 @@ Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
 Plug 'puremourning/vimspector'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sbdchd/neoformat'
 
 "TODO check if vim-polygot is the one making weird pink 'tips'
 "Plug 'sheerun/vim-polyglot' "installs basically every needed vim dev tool for every language
@@ -25,31 +26,25 @@ Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "documentation / project/time managment
-Plug 'vimwiki/vimwiki'
-Plug 'jceb/vim-orgmode'
+"Plug 'vimwiki/vimwiki'
+"Plug 'jceb/vim-orgmode'
 "
-Plug 'itchyny/calendar.vim'
-"convenience
-Plug 'lambdalisue/suda.vim'
+"Plug 'itchyny/calendar.vim'
 call plug#end()
 
 " Load all settings
-so $HOME/.config/nvim/coc.vim
 so $HOME/.config/nvim/gitgutter.vim
 so $HOME/.config/nvim/spector.vim
+so $HOME/.config/nvim/style.vim
+so $HOME/.config/nvim/coc.vim
+
+" templates
+au BufNewFile *.vue 0r $HOME/.config/nvim/templates/setup-standard.vue
 
 "style
-syntax enable
-hi SignColumn guibg=black ctermbg=black
 "set guifont=DejaVu\ Sans\ Mono:h8
 "number stuff
-set number
-au TermOpen * setl nonumber
 "make tabs smaller and visualise indent
-set tabstop=4
-set softtabstop=4 noexpandtab
-set shiftwidth=4
-set list listchars=tab:\|\ 
 "general higlight
 hi Normal guibg=Black guifg=#00cdff ctermbg=Black ctermfg=blue
 hi LineNr guifg=LightBlue  ctermfg=LightBlue 
@@ -57,10 +52,8 @@ hi Statement guifg=#cc0000
 hi Comment guifg=#8080ff
 hi Visual guibg=Blue ctermbg=Blue
 hi Whitespace guifg=grey ctermfg=grey
-"cursorline
-setl cursorline
-au WinEnter * setl cursorline
-au WinLeave * setl nocursorline
+hi Pmenu ctermbg=10 guibg=blue
+
 "removes annoying chars in vertical splits
 setg fillchars+=vert:\ 
 
