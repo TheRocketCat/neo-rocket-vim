@@ -11,10 +11,10 @@ Plug 'Mofiqul/dracula.nvim'
 "linting & language support
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
+"Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
 Plug 'puremourning/vimspector'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sbdchd/neoformat'
 
 "TODO check if vim-polygot is the one making weird pink 'tips'
@@ -59,6 +59,9 @@ setg fillchars+=vert:\
 
 " PATH
 "let $PATH .= ':/usr/bin/node'
+let $PATH .= ':/home/a/go/bin'
+let $PATH .= ':/usr/local/go/bin'
+
 
 "maps
 "map , <leader> "dont use, because its taken used by repeating searching
@@ -88,6 +91,9 @@ let g:netrw_winsize=50
 
 "file searchs
 set path+=**
+set path+='/home/a/go/bin'
+
+
 set wildmenu
 set wildignore+=**/node_modules/**
 "general autocmd
