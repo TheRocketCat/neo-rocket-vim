@@ -12,7 +12,7 @@ Plug 'Mofiqul/dracula.nvim'
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sbdchd/neoformat'
@@ -21,13 +21,15 @@ Plug 'sbdchd/neoformat'
 "Plug 'sheerun/vim-polyglot' "installs basically every needed vim dev tool for every language
 "git tools
 Plug 'tpope/vim-fugitive' "vim git
-Plug 'jreybert/vimagit'
+"Plug 'jreybert/vimagit'
 "file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "documentation / project/time managment
 "Plug 'vimwiki/vimwiki'
 "Plug 'jceb/vim-orgmode'
+" Productivity tools
+Plug 'github/copilot.vim'
 "
 "Plug 'itchyny/calendar.vim'
 call plug#end()
@@ -38,35 +40,19 @@ so $HOME/.config/nvim/spector.vim
 so $HOME/.config/nvim/style.vim
 so $HOME/.config/nvim/coc.vim
 
-" templates
-au BufNewFile *.vue 0r $HOME/.config/nvim/templates/setup-standard.vue
+" language specific settings
+so $HOME/.config/nvim/go.vim
 
-"style
-"set guifont=DejaVu\ Sans\ Mono:h8
-"number stuff
-"make tabs smaller and visualise indent
-"general higlight
-hi Normal guibg=Black guifg=#00cdff ctermbg=Black ctermfg=blue
-hi LineNr guifg=LightBlue  ctermfg=LightBlue 
-hi Statement guifg=#cc0000
-hi Comment guifg=#8080ff
-hi Visual guibg=Blue ctermbg=Blue
-hi Whitespace guifg=grey ctermfg=grey
-hi Pmenu ctermbg=10 guibg=blue
-
-"removes annoying chars in vertical splits
-setg fillchars+=vert:\ 
 
 " PATH
 "let $PATH .= ':/usr/bin/node'
 let $PATH .= ':/home/a/go/bin'
 let $PATH .= ':/usr/local/go/bin'
 
-
-"maps
+" KEY MAPS / BINDINGS
 "map , <leader> "dont use, because its taken used by repeating searching
 map <space> <leader>
-map <Leader>n :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 "switch windows in terminal with normal maps
 "tnoremap <Esc> <C-\><C-N>
 "escape but removes weird characters that show up
@@ -98,12 +84,23 @@ set wildmenu
 set wildignore+=**/node_modules/**
 "general autocmd
 
-"custom files
+" TEMPLATES and SYNTAX
+"svetle
 augroup svelte
    au!
    au BufNewFile,BufRead *.svelte setl syntax=html
    "au BufNewFile,BufRead *.svelte set backupcopy=yes
    au BufNewFile *.svelte :-1read $HOME/.local/share/nvim/templates/svelte.html
+augroup end
+
+" vue
+au BufNewFile *.vue 0r $HOME/.config/nvim/templates/setup-standard.vue
+
+" templ
+augroup templ
+   au!
+   au BufNewFile,BufRead .*.templ setl syntax=html
+   au BufNewFile,BufRead *.templ setl syntax=html
 augroup end
 
 "attempt at fixing terminal from not showing last line
@@ -112,7 +109,6 @@ let g:neoterm_autoinsert=1
 "standard terminal
 "set shell=zsh
 
-"code templates
-nnoremap \svelte :-1read $HOME/.local/share/nvim/templates/svelte.html<CR>4ggi
+
 "scroll
 set scrolloff=3

@@ -2,6 +2,16 @@
 
 syntax enable
 
+"general higlight
+hi Normal guibg=Black guifg=#00cdff ctermbg=Black ctermfg=blue
+hi LineNr guifg=LightBlue  ctermfg=LightBlue 
+hi Statement guifg=#cc0000
+hi Comment guifg=#8080ff
+hi Visual guibg=Blue ctermbg=Blue
+hi Whitespace guifg=grey ctermfg=grey
+hi Pmenu ctermbg=10 guibg=blue
+
+
 " general coloring
 hi SignColumn guibg=black ctermbg=black
 
@@ -21,3 +31,11 @@ setl cursorline
 hi CursorLine guibg=darkblue
 au WinEnter * setl cursorline
 au WinLeave * setl nocursorline
+
+"style
+"set guifont=DejaVu\ Sans\ Mono:h8
+"number stuff
+"make tabs smaller and visualise indent
+
+"removes annoying chars in vertical splits
+setg fillchars+=vert:\ 
