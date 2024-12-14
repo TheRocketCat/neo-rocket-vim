@@ -112,3 +112,9 @@ let g:neoterm_autoinsert=1
 
 "scroll
 set scrolloff=3
+
+" auto format
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
