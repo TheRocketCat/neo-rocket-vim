@@ -3,12 +3,11 @@
 "      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 "
 call plug#begin('~/.local/share/nvim/plugged')
-"
-Plug 'scrooloose/nerdtree'
-"general style 
+" GENERAL STYLE
 Plug 'itchyny/lightline.vim'
 Plug 'Mofiqul/dracula.nvim'
-"linting & language support
+"
+" LINTING & LANGUAGE SUPPORT
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
@@ -16,19 +15,24 @@ Plug 'puremourning/vimspector'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sbdchd/neoformat'
+Plug 'github/copilot.vim'
 
 "TODO check if vim-polygot is the one making weird pink 'tips'
 "Plug 'sheerun/vim-polyglot' "installs basically every needed vim dev tool for every language
-"git tools
+
+" GIT TOOLS
 Plug 'tpope/vim-fugitive' "vim git
 Plug 'jreybert/vimagit'
-"file searching
+
+" FILE SEARCHING
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "documentation / project/time managment
+
+" UTILITIES
 "Plug 'vimwiki/vimwiki'
 "Plug 'jceb/vim-orgmode'
-"
+Plug 'scrooloose/nerdtree'
 "Plug 'itchyny/calendar.vim'
 call plug#end()
 
@@ -41,21 +45,6 @@ so $HOME/.config/nvim/coc.vim
 " templates
 au BufNewFile *.vue 0r $HOME/.config/nvim/templates/setup-standard.vue
 
-"style
-"set guifont=DejaVu\ Sans\ Mono:h8
-"number stuff
-"make tabs smaller and visualise indent
-"general higlight
-hi Normal guibg=Black guifg=#00cdff ctermbg=Black ctermfg=blue
-hi LineNr guifg=LightBlue  ctermfg=LightBlue 
-hi Statement guifg=#cc0000
-hi Comment guifg=#8080ff
-hi Visual guibg=Blue ctermbg=Blue
-hi Whitespace guifg=grey ctermfg=grey
-hi Pmenu ctermbg=10 guibg=blue
-
-"removes annoying chars in vertical splits
-setg fillchars+=vert:\ 
 
 " PATH
 "let $PATH .= ':/usr/bin/node'
