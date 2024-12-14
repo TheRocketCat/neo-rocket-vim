@@ -10,10 +10,10 @@ Plug 'Mofiqul/dracula.nvim'
 " LINTING & LANGUAGE SUPPORT
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
-Plug 'puremourning/vimspector'
+"Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
+"Plug 'puremourning/vimspector'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sbdchd/neoformat'
 Plug 'github/copilot.vim'
 
@@ -22,9 +22,10 @@ Plug 'github/copilot.vim'
 
 " GIT TOOLS
 Plug 'tpope/vim-fugitive' "vim git
-Plug 'jreybert/vimagit'
-
 " FILE SEARCHING
+"Plug 'jreybert/vimagit'
+
+"file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "documentation / project/time managment
@@ -33,6 +34,9 @@ Plug 'junegunn/fzf.vim'
 "Plug 'vimwiki/vimwiki'
 "Plug 'jceb/vim-orgmode'
 Plug 'scrooloose/nerdtree'
+" Productivity tools
+Plug 'github/copilot.vim'
+"
 "Plug 'itchyny/calendar.vim'
 call plug#end()
 
@@ -42,17 +46,19 @@ so $HOME/.config/nvim/spector.vim
 so $HOME/.config/nvim/style.vim
 so $HOME/.config/nvim/coc.vim
 
-" templates
-au BufNewFile *.vue 0r $HOME/.config/nvim/templates/setup-standard.vue
+" language specific settings
+so $HOME/.config/nvim/go.vim
 
 
 " PATH
 "let $PATH .= ':/usr/bin/node'
+let $PATH .= ':/home/a/go/bin'
+let $PATH .= ':/usr/local/go/bin'
 
-"maps
+" KEY MAPS / BINDINGS
 "map , <leader> "dont use, because its taken used by repeating searching
 map <space> <leader>
-map <Leader>n :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 "switch windows in terminal with normal maps
 "tnoremap <Esc> <C-\><C-N>
 "escape but removes weird characters that show up
@@ -77,16 +83,30 @@ let g:netrw_winsize=50
 
 "file searchs
 set path+=**
+set path+='/home/a/go/bin'
+
+
 set wildmenu
 set wildignore+=**/node_modules/**
 "general autocmd
 
-"custom files
+" TEMPLATES and SYNTAX
+"svetle
 augroup svelte
    au!
    au BufNewFile,BufRead *.svelte setl syntax=html
    "au BufNewFile,BufRead *.svelte set backupcopy=yes
    au BufNewFile *.svelte :-1read $HOME/.local/share/nvim/templates/svelte.html
+augroup end
+
+" vue
+au BufNewFile *.vue 0r $HOME/.config/nvim/templates/setup-standard.vue
+
+" templ
+augroup templ
+   au!
+   au BufNewFile,BufRead .*.templ setl syntax=html
+   au BufNewFile,BufRead *.templ setl syntax=html
 augroup end
 
 "attempt at fixing terminal from not showing last line
@@ -95,7 +115,12 @@ let g:neoterm_autoinsert=1
 "standard terminal
 "set shell=zsh
 
-"code templates
-nnoremap \svelte :-1read $HOME/.local/share/nvim/templates/svelte.html<CR>4ggi
+
 "scroll
 set scrolloff=3
+
+" auto format
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
