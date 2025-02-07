@@ -51,3 +51,13 @@ hi Pmenu ctermbg=10 guibg=blue
 
 "removes annoying chars in vertical splits
 setg fillchars+=vert:\ 
+
+
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+	colorscheme default
+  endif
+endif
+
