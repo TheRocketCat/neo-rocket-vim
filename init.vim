@@ -3,12 +3,11 @@
 "      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 "
 call plug#begin('~/.local/share/nvim/plugged')
-"
-Plug 'scrooloose/nerdtree'
-"general style 
+" GENERAL STYLE
 Plug 'itchyny/lightline.vim'
 Plug 'Mofiqul/dracula.nvim'
-"linting & language support
+"
+" LINTING & LANGUAGE SUPPORT
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
@@ -16,18 +15,25 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sbdchd/neoformat'
+Plug 'github/copilot.vim'
 
 "TODO check if vim-polygot is the one making weird pink 'tips'
 "Plug 'sheerun/vim-polyglot' "installs basically every needed vim dev tool for every language
-"git tools
+
+" GIT TOOLS
 Plug 'tpope/vim-fugitive' "vim git
+" FILE SEARCHING
 "Plug 'jreybert/vimagit'
+
 "file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "documentation / project/time managment
+
+" UTILITIES
 "Plug 'vimwiki/vimwiki'
 "Plug 'jceb/vim-orgmode'
+Plug 'scrooloose/nerdtree'
 " Productivity tools
 Plug 'github/copilot.vim'
 "
