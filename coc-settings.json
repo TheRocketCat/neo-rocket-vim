@@ -1,19 +1,34 @@
 {
-	"svelte.enable-ts-plugin": true,
-	"languageserver": {
-		"go": {
-			"command": "gopls",
-			"rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
-			"filetypes": ["go"],
-			"initializationOptions": {
-				"usePlaceholders": true
-			}
-		},
-		"graphql": {
-			"command": "graphql-lsp",
-			"args": ["server", "-m", "stream"],
-			// customize filetypes to your needs
-			"filetypes": ["typescript", "typescriptreact", "graphql"]
-		}
-	}
+  "svelte.enable-ts-plugin": true,
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.work",
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": [
+        "server",
+        "-m",
+        "stream"
+      ],
+      "filetypes": [
+        "typescript",
+        "typescriptreact",
+        "graphql"
+      ]
+    }
+  }
 }
