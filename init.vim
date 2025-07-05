@@ -6,6 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " GENERAL STYLE
 Plug 'itchyny/lightline.vim'
 Plug 'Mofiqul/dracula.nvim'
+Plug 'folke/tokyonight.nvim'
 "
 " LINTING & LANGUAGE SUPPORT
 "Plug 'dense-analysis/ale'
@@ -28,6 +29,11 @@ Plug 'tpope/vim-fugitive' "vim git
 "file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+
 "documentation / project/time managment
 
 " UTILITIES
@@ -45,6 +51,12 @@ so $HOME/.config/nvim/gitgutter.vim
 so $HOME/.config/nvim/spector.vim
 so $HOME/.config/nvim/style.vim
 so $HOME/.config/nvim/coc.vim
+
+" temporary telescope settings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " language specific settings
 so $HOME/.config/nvim/go.vim
@@ -77,8 +89,8 @@ let g:netrw_banner=0 "disable banner
 let g:netrw_browse_split=4 "open in prior window
 let g:netrw_altv=1 "open splits to the right
 let g:netrw_liststyle=3 "tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+"let g:netrw_list_hide=netrw_gitignore#Hide() " this is not working
+"let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+' " this is not working
 let g:netrw_winsize=50
 
 "file searchs
