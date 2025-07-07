@@ -2,15 +2,21 @@
 "sh -c 'curl -fLo '${XDG_DATA_HOME:-$HOME/.local/share}'/nvim/site/autoload/plug.vim --create-dirs \
 "      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 "
+
 call plug#begin('~/.local/share/nvim/plugged')
+
 " GENERAL STYLE
 Plug 'itchyny/lightline.vim'
 Plug 'Mofiqul/dracula.nvim'
 Plug 'folke/tokyonight.nvim'
-"
+
 " LINTING & LANGUAGE SUPPORT
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'nvim-lua/plenary.nvim' " dependency of some codecompanion, telescope
+Plug 'nvim-treesitter/nvim-treesitter', {'tag':'v0.10.0','do': ':TSUpdate'}  " dependency of codecompanion.nvim
+Plug 'olimorris/codecompanion.nvim'
 "Plug 'josa42/coc-go' , {'do': 'yarn install --forzen-lockfile'}
 "Plug 'puremourning/vimspector'
 
@@ -18,20 +24,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'
 Plug 'github/copilot.vim'
 
-"TODO check if vim-polygot is the one making weird pink 'tips'
-"Plug 'sheerun/vim-polyglot' "installs basically every needed vim dev tool for every language
 
 " GIT TOOLS
 Plug 'tpope/vim-fugitive' "vim git
 " FILE SEARCHING
-"Plug 'jreybert/vimagit'
-
-"file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " telescope
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 "documentation / project/time managment
@@ -41,8 +41,8 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 "Plug 'jceb/vim-orgmode'
 Plug 'scrooloose/nerdtree'
 " Productivity tools
-Plug 'github/copilot.vim'
-"
+
+
 "Plug 'itchyny/calendar.vim'
 call plug#end()
 
@@ -136,3 +136,8 @@ augroup fmt
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat
 augroup END
+
+
+lua << EOF
+	require("codecompanion").setup()
+EOF
